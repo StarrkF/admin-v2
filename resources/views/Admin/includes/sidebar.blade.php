@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="sidebar-menu">
-            <p class="menu">@faymergen</p>
+            <p class="menu">{{ Auth::user()->name }}</p>
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
@@ -66,14 +66,14 @@
                 <li class="sidebar-title">Raise Support</li>
 
                 <li class="sidebar-item  ">
-                    <a href="#" class='sidebar-link'>
+                    <a href="{{ route('get.users') }}" class='sidebar-link'>
                         <i class="bi bi-person"></i>
-                        <span>Account</span>
+                        <span>Users</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item  ">
-                    <a href="#" class='sidebar-link'>
+                    <a href="{{ route('logout') }}" class='sidebar-link'>
                         <i class="bi bi-box-arrow-right"></i>
                         <span>Logout</span>
                     </a>
