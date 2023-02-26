@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
 
+
     public function index()
     {
         return view('Admin.pages.users.index');
@@ -26,8 +27,10 @@ class UserController extends Controller
     public function register(RegisterRequest $request)
     {
         try {
-            User::create($request->validated());
-            return back()->with('success','Account successfully created.');
+            if (Auth::user()->can('create-users')) {
+                User::create($request->validated());
+                return back()->with('success','Account successfully created.');
+            }
         } catch (\Throwable $th) {
             return back()->with('error','Account create Failed.');
         }

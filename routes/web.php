@@ -23,7 +23,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
 
     Route::get('',[HomeController::class,'index'])->name('get.admin.dashboard');
 
-    Route::get('user',[UserController::class,'index'])->name('get.users');
+    Route::get('user',[UserController::class,'index'])->name('get.users')->middleware('can:show-user');
     Route::post('user',[UserController::class,'register'])->name('post.register');
 
 });
