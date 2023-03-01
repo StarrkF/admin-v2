@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('login',[UserController::class,'indexLogin'])->name('get.login');
 Route::post('login',[UserController::class,'login'])->name('post.login');
 Route::get('logout',[UserController::class,'logout'])->name('logout');
+Route::post('changeLang',[HomeController::class,'changeLang'])->name('get.change-lang');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
 

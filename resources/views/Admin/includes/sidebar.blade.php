@@ -13,14 +13,28 @@
                     </div>
                     <x-svg-icon type="dark-switch" />
                 </div>
+
+
+
+
+
                 <div class="sidebar-toggler  x">
                     <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
                 </div>
             </div>
         </div>
         <div class="sidebar-menu">
+            <form action="{{ route('get.change-lang') }}" method="POST">
+            @csrf
+                <div class="mx-5 form-check form-switch fs-6">
+
+                    <input onChange="this.form.submit()" class="form-check-input" type="checkbox" name="lang" value="tr" {{ App::getLocale()=='tr' ? 'checked' : '' }}  id="changeLang">
+                    <label class="form-check-label" for="changeLang">EN/TR</label>
+                    {{ App::getLocale() }}
+                </div>
+            </form>
+
             <p class="menu">{{ Auth::user()->name." [".Auth::user()->role_name."]" }}</p>
-            <p class="menu">{{ Auth::user()->permission_names }}</p>
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
