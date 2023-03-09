@@ -24,31 +24,30 @@
             </div>
         </div>
         <div class="sidebar-menu">
-            <form action="{{ route('get.change-lang') }}" method="POST">
-            @csrf
+
                 <div class="mx-5 form-check form-switch fs-6">
 
-                    <input onChange="this.form.submit()" class="form-check-input" type="checkbox" name="lang" value="tr" {{ App::getLocale()=='tr' ? 'checked' : '' }}  id="changeLang">
+                    <input  class="form-check-input" type="checkbox" name="lang"  {{ App::getLocale()=='tr' ? 'checked' : '' }}  id="changeLang">
                     <label class="form-check-label" for="changeLang">EN/TR</label>
                     {{ App::getLocale() }}
                 </div>
-            </form>
+
 
             <p class="menu">{{ Auth::user()->name." [".Auth::user()->role_name."]" }}</p>
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
                 <li class="sidebar-item active ">
-                    <a href="index.html" class='sidebar-link'>
+                    <a href="#" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
-                        <span>Dashboard</span>
+                        <span>{{ __('menus.dashboard') }}</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
-                        <span>Pages</span>
+                        <span>{{ __('menus.pages') }}</span>
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
@@ -65,16 +64,16 @@
                 <li class="sidebar-item  ">
                     <a href="{{ route('get.users') }}" class='sidebar-link'>
                         <i class="bi bi-person"></i>
-                        <span>Users</span>
+                        <span>{{ __('menus.users') }}</span>
                     </a>
                 </li>
                 @endcan
 
                 @can('show-user')
                 <li class="sidebar-item  ">
-                    <a href="{{ route('get.users') }}" class='sidebar-link'>
+                    <a href="{{ route('get.roles-permissions') }}" class='sidebar-link'>
                         <i class="bi bi-shield-lock"></i>
-                        <span>Roles</span>
+                        <span>{{ __('menus.roles_permissions') }}</span>
                     </a>
                 </li>
                 @endcan
@@ -82,7 +81,7 @@
                 <li class="sidebar-item  ">
                     <a href="{{ route('logout') }}" class='sidebar-link'>
                         <i class="bi bi-box-arrow-right"></i>
-                        <span>Logout</span>
+                        <span>{{ __('menus.logout') }}</span>
                     </a>
                 </li>
 

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -13,14 +14,10 @@ class HomeController extends Controller
         return view('Admin.pages.dashboard');
     }
 
-    public function changeLang(Request $request)
+    public function changeLang(String $lang)
     {
-        if($request->lang)
-        {
-            App::setLocale($request->lang);
-            return back();
-        }
-        App::setLocale('en');
-        return back();
+        App::setLocale($lang);
+        Session::put('locale', $lang);
+
     }
 }
