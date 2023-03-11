@@ -41,7 +41,8 @@
     <!-- Need: Apexcharts -->
     <script src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
 
-    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/custom.js') }}"></script> --}}
+    @vite(['resources/js/app.js','resources/js/custom.js'])
     @yield('js')
 
 </body>

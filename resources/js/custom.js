@@ -31,7 +31,7 @@ $('#selectRole').change(function(){
     {
 
         axios.get('/role_permissions/' + this.value).then(function (response) {
-            response.data.forEach(function (item) {
+            response.data.data.forEach(function (item) {
                 $('#perm_'+item.id).attr('checked', true);
             });
          })
