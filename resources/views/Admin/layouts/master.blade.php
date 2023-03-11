@@ -31,18 +31,12 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
-        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
     <script src="{{ asset('assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script>
     <!-- Need: Apexcharts -->
     <script src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
-
-    {{-- <script src="{{ asset('assets/js/custom.js') }}"></script> --}}
-    @vite(['resources/js/app.js','resources/js/custom.js'])
+    @vite('resources/js/app.js')
     @yield('js')
 
 </body>

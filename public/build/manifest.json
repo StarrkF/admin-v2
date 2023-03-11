@@ -5,13 +5,8 @@
     "src": "resources/css/app.css"
   },
   "resources/js/app.js": {
-    "file": "assets/app-a6d2e222.js",
+    "file": "assets/app-5b6be0b0.js",
     "isEntry": true,
     "src": "resources/js/app.js"
-  },
-  "resources/js/custom.js": {
-    "file": "assets/custom-90a4955a.js",
-    "isEntry": true,
-    "src": "resources/js/custom.js"
   }
 }

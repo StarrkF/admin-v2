@@ -1,5 +1,3 @@
-axios.defaults.baseURL = 'http://admin-v2.test/api/';
-
 $('#changeLang').click(function(){
     if($(this).prop('checked'))
     {
