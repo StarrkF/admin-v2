@@ -10,6 +10,8 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "jquery": "^3.6.4"
+        "@fortawesome/fontawesome-free": "^6.3.0",
+        "jquery": "^3.6.4",
+        "sweetalert2": "^11.7.3"
     }
 }

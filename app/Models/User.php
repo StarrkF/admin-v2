@@ -25,6 +25,12 @@ class User extends Authenticatable
         'role_id'
     ];
 
+    protected $appends = [
+        'role_id',
+        'role_name',
+        'permission_names',
+    ];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -33,6 +39,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+
     ];
 
     /**
@@ -49,11 +56,15 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
+    public function getRoleIdAttribute()
+    {
+        return  $this->roles()->first()->id ?? null;
+    }
+
 
     public function getRoleNameAttribute()
     {
-        $role = $this->roles()->first();
-        return $role ? $role->name : 'Unassigned';
+        return  $this->roles()->first()->name ?? 'Unassigned';
     }
 
     public function getPermissionNamesAttribute()

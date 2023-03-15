@@ -6,8 +6,12 @@
 
 import axios from 'axios';
 import jQuery from 'jquery';
+import Swal from 'sweetalert2';
+
+
 window.$ = jQuery;
 window.axios = axios;
+window.Swal = Swal;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.baseURL = 'http://admin-v2.test/api/';

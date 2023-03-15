@@ -27,9 +27,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
 
     Route::get('user',[UserController::class,'index'])->name('get.users')->middleware('can:show-user');
     Route::post('user',[UserController::class,'register'])->name('post.register');
+    Route::post('user/update',[UserController::class,'update'])->name('update.user');
+    Route::get('user/delete/{id}',[UserController::class,'delete'])->name('delete.user');
 
     Route::get('roles_permissions',[RolePermissionController::class,'index'])->name('get.roles-permissions')->middleware('can:show-user');
     Route::post('roles_permissions',[RolePermissionController::class,'store'])->name('post.role.create')->middleware('can:create-user');
     Route::post('permission/update',[RolePermissionController::class,'updatePermissions'])->name('post.role-permission-update');
+    Route::get('permission/delete/{id}',[RolePermissionController::class,'destroy'])->name('delete.role');
 
 });

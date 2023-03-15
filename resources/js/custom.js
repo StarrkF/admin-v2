@@ -1,26 +1,21 @@
-$('#changeLang').click(function(){
-    if($(this).prop('checked'))
-    {
-        axios.get('/change_lang/tr').then(function (response) {
-            window.location.reload();
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
-    }
-    else
-    {
-        axios.get('/change_lang/en').then(function (response) {
-            window.location.reload();
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
-    }
 
+$('.swalDelete').click(function (e) {
+
+    e.preventDefault();
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.submit();
+        }
+      })
 })
-
-
 
 
 $('#selectRole').change(function(){
@@ -44,4 +39,16 @@ $('#selectAll').click(function(){
 
     this.checked ? $('.permCheck').attr('checked', true) :  $('.permCheck').attr('checked', false);
 
+})
+
+
+$('.editUser').click(function(){
+
+    axios.get('/user/' + this.id).then(function (response) {
+       let data = response.data.data;
+       $('#name').val(data.name);
+       $('#hidden_id').val(data.id);
+       $('#email').val(data.email);
+       $('#role').val(data.role_id);
+    })
 })

@@ -19,7 +19,7 @@
                 </form>
 
 
-                <x-table :heads="['Role', 'Permissions']">
+                <x-table :heads="['Role', 'Permissions', 'Action']">
                     @foreach ($roles as $role)
                         <tr>
                             <td>{{ $role->name }}</td>
@@ -27,6 +27,13 @@
                                 @foreach ($role->permissions as $perm)
                                     <span class="badge bg-primary">{{ $perm->name }}</span>
                                 @endforeach
+                            </td>
+                            <td>
+                                <form action="{{ route('delete.role',$role->id) }}" class="swalDelete" method="GET">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

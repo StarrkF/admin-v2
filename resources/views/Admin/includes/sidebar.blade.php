@@ -25,12 +25,12 @@
         </div>
         <div class="sidebar-menu">
 
-                <div class="mx-5 form-check form-switch fs-6">
+                {{-- <div class="mx-5 form-check form-switch fs-6">
 
                     <input  class="form-check-input" type="checkbox" name="lang"  {{ App::getLocale()=='tr' ? 'checked' : '' }}  id="changeLang">
                     <label class="form-check-label" for="changeLang">EN/TR</label>
                     {{ App::getLocale() }}
-                </div>
+                </div> --}}
 
 
             <p class="menu">{{ Auth::user()->name." [".Auth::user()->role_name."]" }}</p>

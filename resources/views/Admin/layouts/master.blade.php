@@ -31,12 +31,11 @@
         </div>
     </div>
 
+    @vite('resources/js/app.js')
     <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
     <script src="{{ asset('assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script>
-    <!-- Need: Apexcharts -->
     <script src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
-    @vite('resources/js/app.js')
     @yield('js')
 
 </body>

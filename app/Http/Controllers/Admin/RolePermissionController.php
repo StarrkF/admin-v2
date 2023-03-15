@@ -90,8 +90,14 @@ class RolePermissionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $role = Role::findorFail($id);
+        $delete = $role->delete();
+
+        return $delete
+        ? back()->with('success', 'Role deleted successfully')
+        : back()->with('error', 'Role not deleted');
+
     }
 }

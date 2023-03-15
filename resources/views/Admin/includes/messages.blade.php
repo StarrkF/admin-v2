@@ -1,10 +1,10 @@
 <!-- Validator Errors -->
 
-{{-- @if ($errors->any())
+@if ($errors->any())
     @foreach ($errors->all() as $error)
-        <x-alert type="success" :message="$error" />
+        <x-alert type="danger" :message="$error" />
     @endforeach
-@endif --}}
+@endif
 
 
 @if (Session::has('success'))
