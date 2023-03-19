@@ -70,6 +70,10 @@ class User extends Authenticatable
     public function getPermissionNamesAttribute()
     {
         $role = $this->roles()->first();
+        if($role?->id == 1)
+        {
+            return Permission::all()->pluck('name')->implode(', ');
+        }
         if ($role) {
             return $role->permissions->pluck('name')->implode(', ');
         }

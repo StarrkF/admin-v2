@@ -57,27 +57,14 @@
                             </div>
                         </div>
                         <div class="col-md-4 mt-3">
-                            <div class="form-check float-end">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" id="selectAll" class="form-check-input form-check-primary">
-                                    <label class="form-check-label" for="selectAll">Select All</label>
-                                </div>
-                            </div>
+                            <x-input.checkbox id="selectAll" label="Select All" dataClass="permCheck"/>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
                         @foreach ($permissions as $permission)
                             <div class="col-md-6">
-                                <div class="form-check">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" value="{{ $permission->name }}"
-                                            class="form-check-input form-check-primary permCheck"
-                                            id="perm_{{ $permission->id }}" name="permission[]">
-                                        <label class="form-check-label"
-                                            for="perm_{{ $permission->id }}">{{ $permission->name }}</label>
-                                    </div>
-                                </div>
+                                <x-input.checkbox id="{{ 'perm_'.$permission->id }}" name="permission[]" :label="$permission->name" :value="$permission->name" class="permCheck"/>
                             </div>
                         @endforeach
 

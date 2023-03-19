@@ -30,11 +30,8 @@ class UserController extends Controller
     public function register(RegisterRequest $request)
     {
         try {
-            if (Auth::user()->can('create-user')) {
-                User::create($request->validated());
-                return back()->with('success','Account successfully created.');
-            }
-            return back()->with('error','You do not have create permssion');
+            User::create($request->validated());
+            return back()->with('success','Account successfully created.');
         } catch (\Throwable $th) {
             return back()->with('error','Account create Failed.');
         }
@@ -68,7 +65,7 @@ class UserController extends Controller
         try {
             $user = User::findOrFail($request->hidden_id);
             $user->name = $request->name;
-            $user->email = $request->name;
+            $user->email = $request->email;
             $user->syncRoles($request->role);
             $user->save();
             return back()->with('success', 'User updated successfully');

@@ -14,10 +14,10 @@ class HomeController extends Controller
         return view('Admin.pages.dashboard');
     }
 
-    public function changeLang(String $lang)
+    public function changeLang()
     {
-        App::setLocale($lang);
-        Session::put('locale', $lang);
+        App::setLocale(request()->lang);
+        return back()->with('success','System Language Changed');
 
     }
 }

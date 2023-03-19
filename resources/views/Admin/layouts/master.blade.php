@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
     @yield('css')
+    @vite('resources/js/app.js')
 
 </head>
 
@@ -31,7 +32,7 @@
         </div>
     </div>
 
-    @vite('resources/js/app.js')
+
     <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
     <script src="{{ asset('assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script>

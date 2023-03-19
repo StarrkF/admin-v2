@@ -84,6 +84,8 @@
             </form>
         </div>
 
+
+
         <div class="col-md-8 col-12">
             <x-card-basic title="All Users">
                 <x-table :heads="['ID', 'Name', 'Email', 'Role', 'Permissions', 'Action']">

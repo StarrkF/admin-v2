@@ -37,7 +37,8 @@ $('#selectRole').change(function(){
 
 $('#selectAll').click(function(){
 
-    this.checked ? $('.permCheck').attr('checked', true) :  $('.permCheck').attr('checked', false);
+    var className = '.' + $(this).data('class');
+    this.checked ? $(className).attr('checked', true) :  $(className).attr('checked', false);
 
 })
 

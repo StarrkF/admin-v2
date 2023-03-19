@@ -14,28 +14,22 @@
                     <x-svg-icon type="dark-switch" />
                 </div>
 
-
-
-
-
                 <div class="sidebar-toggler  x">
                     <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
                 </div>
             </div>
         </div>
         <div class="sidebar-menu">
-
-                {{-- <div class="mx-5 form-check form-switch fs-6">
-
-                    <input  class="form-check-input" type="checkbox" name="lang"  {{ App::getLocale()=='tr' ? 'checked' : '' }}  id="changeLang">
-                    <label class="form-check-label" for="changeLang">EN/TR</label>
-                    {{ App::getLocale() }}
-                </div> --}}
-
-
+            {{-- <div class="mx-5 form-check form-switch fs-6">
+                <a href="{{ route('get.change-lang').'?lang=tr' }}">TR</a>
+                <a href="{{ route('get.change-lang').'?lang=en' }}">EN</a>
+                <input  class="form-check-input" type="checkbox" name="lang"  {{ App::getLocale()=='tr' ? 'checked' : '' }}  id="changeLang">
+                <label class="form-check-label" for="changeLang">EN/TR</label>
+                {{ App::getLocale() }}
+            </div> --}}
             <p class="menu">{{ Auth::user()->name." [".Auth::user()->role_name."]" }}</p>
             <ul class="menu">
-                <li class="sidebar-title">Menu</li>
+                <li class="sidebar-title">{{ __('menus.content') }}</li>
 
                 <li class="sidebar-item active ">
                     <a href="#" class='sidebar-link'>
@@ -51,14 +45,12 @@
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="component-alert.html">Alert</a>
+                            <a href="component-alert.html">{{ __('menus.pages') }}</a>
                         </li>
                     </ul>
                 </li>
 
-
-
-                <li class="sidebar-title">Raise Support</li>
+                <li class="sidebar-title">{{ __('menus.settings') }}</li>
 
                 @can('show-user')
                 <li class="sidebar-item  ">
@@ -69,7 +61,7 @@
                 </li>
                 @endcan
 
-                @can('show-user')
+                @can('show-role')
                 <li class="sidebar-item  ">
                     <a href="{{ route('get.roles-permissions') }}" class='sidebar-link'>
                         <i class="bi bi-shield-lock"></i>
