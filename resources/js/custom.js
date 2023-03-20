@@ -1,4 +1,6 @@
 
+// new Choices('.choices');
+
 $('.swalDelete').click(function (e) {
 
     e.preventDefault();

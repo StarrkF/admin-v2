@@ -31,10 +31,17 @@
             <ul class="menu">
                 <li class="sidebar-title">{{ __('menus.content') }}</li>
 
-                <li class="sidebar-item active ">
+                <li class="sidebar-item">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>{{ __('menus.dashboard') }}</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a href="{{ route('get.categories') }}" class='sidebar-link'>
+                        <i class="bi bi-list"></i>
+                        <span>{{ __('menus.categories') }}</span>
                     </a>
                 </li>
 

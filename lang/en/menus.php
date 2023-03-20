@@ -8,4 +8,6 @@ return [
     'users' => 'Users',
     'roles_permissions' => 'Roles & Permissions',
     'logout' => 'Logout',
+    'categories' => 'Categories',
+    'category' => 'Category',
 ];

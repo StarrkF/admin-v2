@@ -14,6 +14,7 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
     @yield('css')
+    @stack('widget-css')
     @vite('resources/js/app.js')
 
 </head>
@@ -38,6 +39,7 @@
     <script src="{{ asset('assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script>
     <script src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
     @yield('js')
+    @stack('widget-js')
 
 </body>
 

@@ -7,5 +7,6 @@ return [
     'pages' => 'Sayfalar ',
     'users' => 'Kullanıcılar',
     'roles_permissions' => 'Roller & Yetkiler',
-    'logout' => 'Çıkış Yap'
+    'logout' => 'Çıkış Yap',
+    'categories' => 'Kategoriler',
 ];

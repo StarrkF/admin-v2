@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\UserController;
@@ -35,5 +36,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
     Route::post('roles_permissions',[RolePermissionController::class,'store'])->name('post.role.create')->middleware('can:create-role');
     Route::post('permission/update',[RolePermissionController::class,'updatePermissions'])->name('post.role-permission-update');
     Route::get('permission/delete/{id}',[RolePermissionController::class,'destroy'])->name('delete.role')->middleware('can:delete-role');
+
+    Route::get('categories', [CategoryController::class,'index'])->name('get.categories');
+    Route::post('categories', [CategoryController::class,'store'])->name('store.categories');
 
 });
