@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use App\Models\PageType;
 use Illuminate\Http\Request;
@@ -14,8 +15,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::with('page_type')->get();
-        return $this->successResponse($categories);
+        try {
+            $categories = Category::with('page_type')->get();
+            return $this->successResponse(CategoryResource::collection($categories));
+        } catch (\Throwable $th) {
+            return $this->errorResponse();
+        }
+
     }
 
     /**
@@ -31,7 +37,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $category = Category::create([
+                'name' => $request->name,
+                'slug' => $request->name,
+                'number' => $request->number,
+                'page_type_id' => $request->page_type_id,
+            ]);
+
+            return $this->createdResponse($category);
+        } catch (\Throwable $th) {
+            return $this->errorResponse();
+        }
     }
 
     /**
@@ -39,7 +56,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return $category ? $this->successResponse($category) : $this->notFoundResponse();
+        return $this->successResponse($category);
     }
 
     /**
@@ -55,7 +72,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $update = $category->update([
+            'name' => $request->name,
+            'slug' => $request->name,
+            'number' => $request->number,
+            'page_type_id' => $request->page_type_id,
+        ]);
+
+        return $update ? $this->successResponse($category) : $this->errorResponse();
     }
 
     /**

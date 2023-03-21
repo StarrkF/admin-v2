@@ -1,9 +1,11 @@
 @extends('Admin.layouts.master')
 @section('admin.content')
     <x-breadcrumb menu="{{ __('menus.categories') }}" />
-    @include('Admin.includes.messages')
+    {{-- @include('Admin.includes.messages') --}}
 
-    <div class="row">
+    <category></category>
+
+    {{-- <div class="row">
         <div class="col-4">
             <x-card-basic title="Create Category">
                 <div class="row">
@@ -21,14 +23,7 @@
                 </div>
             </x-card-basic>
         </div>
-
-        <div class="col-8">
-            <x-card-basic title="Categories">
-                <category></category>
-            </x-card-basic>
-
-        </div>
-    </div>
+    </div> --}}
 
 
 @endsection

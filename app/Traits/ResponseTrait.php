@@ -16,7 +16,7 @@ trait ResponseTrait
         return new JsonResponse($response, $statusCode);
     }
 
-    public function errorResponse($errors, $message = 'Server Error', $statusCode = 500): JsonResponse
+    public function errorResponse($errors = 'error', $message = 'Server Error', $statusCode = 500): JsonResponse
     {
         $data = [
             'message' => $message,
