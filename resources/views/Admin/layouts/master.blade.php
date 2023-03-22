@@ -17,10 +17,11 @@
     @stack('widget-css')
     @vite('resources/js/app.js')
 
+
 </head>
 
 <body>
-    <div id="app">
+    <div>
         @include('Admin.includes.sidebar')
         <div id="main">
             <header class="mb-3">

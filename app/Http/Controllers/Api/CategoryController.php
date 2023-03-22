@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CategoryCollection;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use App\Models\PageType;
@@ -16,8 +17,8 @@ class CategoryController extends Controller
     public function index()
     {
         try {
-            $categories = Category::with('page_type')->get();
-            return $this->successResponse(CategoryResource::collection($categories));
+            $categories = Category::filter()->with('page_type')->paginate(3);
+            return $this->successResponse(new CategoryCollection($categories));
         } catch (\Throwable $th) {
             return $this->errorResponse();
         }

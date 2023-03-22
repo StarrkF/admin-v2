@@ -3,6 +3,7 @@
 import { ref, onMounted, reactive } from 'vue'
 // import datatable from './components/categories/datatable.vue';
 import CardBasic from './components/card-basic.vue';
+import Accordion from './components/accordion.vue';
 import useApi from './api';
 
 const { getData, showData, deleteData, storeData, updateData, swalSuccess, swalError, swalTrigger } = useApi();
@@ -12,6 +13,10 @@ const categories = ref()
 const page_types = ref()
 const buttonSection = ref()
 const isLoading = ref(true);
+const byPageType = ref()
+const search = ref()
+const currentPage = ref(1)
+let lastPage = ref()
 
 const category = ref({
     id: null,
@@ -26,9 +31,12 @@ onMounted(() => {
     isLoading.value = false
 })
 
-const getCategory = async () => {
-    let response = await getData('/category')
+const getCategory = async (page) => {
+    let response = await getData('/category', page, byPageType.value, search.value)
     categories.value = response.data
+    currentPage.value = response.current_page
+    lastPage.value = response.last_page
+    console.log(currentPage.value,lastPage.value,response.current_page)
 }
 
 const storeCategory = async () => {
@@ -83,7 +91,27 @@ const clearCategory = () => {
 <template>
     <div class="row">
         <div v-if="!isLoading">
+
+
+
             <CardBasic>
+                <Accordion>
+                    <CardBasic>
+                        <div class="row">
+                            <div class="form-group col-4">
+                                <label class="text-black">Filter Page Type</label>
+                                <select class="form-select" v-model="byPageType" @change="getCategory()">
+                                    <option selected value="">Clear Filter</option>
+                                    <option v-for="pagetype in page_types" :value="pagetype.id">{{ pagetype.name }}</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-8">
+                                <label class="text-black">Search Term</label>
+                                <input type="text" class="form-control" v-model="search" @input="getCategory()">
+                            </div>
+                        </div>
+                    </CardBasic>
+                </Accordion>
                 <div v-if="isLoading" class="d-flex justify-content-center align-items-center">
                     <div class="spinner-border text-primary" role="status">
                         <span class="visually-hidden">Loading...</span>
@@ -138,6 +166,20 @@ const clearCategory = () => {
                                 </tr>
                             </tbody>
                         </table>
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li class="page-item" :class="{ disabled: currentPage === 1 }">
+                                    <a role="button" class="page-link" @click="getCategory((currentPage - 1))">Previous</a>
+                                </li>
+                                <li class="page-item" v-for="page in lastPage" :key="page"
+                                    :class="{ active: page === currentPage }">
+                                    <a role="button" class="page-link" @click="getCategory(page)">{{ page }}</a>
+                                </li>
+                                <li class="page-item" :class="{ disabled: currentPage === lastPage }">
+                                    <a role="button" class="page-link" @click="getCategory(currentPage + 1)">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
 
