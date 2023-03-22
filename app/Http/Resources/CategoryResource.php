@@ -19,7 +19,7 @@ class CategoryResource extends JsonResource
             'name' => $this->name,
             'number' => $this->number,
             'page_type_id' => $this->page_type_id,
-            'page_type_name' => $this->page_type->name
+            'page_type_name' => $this->page_type->name,
         ];
     }
 }

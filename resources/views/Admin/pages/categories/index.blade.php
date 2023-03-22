@@ -3,7 +3,10 @@
     <x-breadcrumb menu="{{ __('menus.categories') }}" />
     {{-- @include('Admin.includes.messages') --}}
 
-    <category></category>
+    <div id="app">
+        <category></category>
+    </div>
+
 
     {{-- <div class="row">
         <div class="col-4">
