@@ -2,7 +2,7 @@ export default function useApi() {
 
     const getData = async (endpoint, page = 1, type = null, search = null) => {
         try {
-            const response = await axios.get(endpoint, { params: { page: page, type: type, search: search } });
+            const response = await axios.get(endpoint, { params: { type: type, search: search, page: page } });
             return response.data.data;
         } catch (error) {
             return error.message;
