@@ -34,8 +34,8 @@ onMounted(() => {
 const getCategory = async (page) => {
     let response = await getData('/category', page, byPageType.value, search.value)
     categories.value = response.data
-    currentPage.value = response.current_page
-    lastPage.value = response.last_page
+    currentPage.value = response.meta.current_page
+    lastPage.value = response.meta.last_page
     console.log(currentPage.value,lastPage.value,response.current_page)
 }
 
@@ -84,16 +84,11 @@ const clearCategory = () => {
     category.value = { id: null, name: null, page_type_id: null, number: null }
 }
 
-
-
 </script>
 
 <template>
     <div class="row">
         <div v-if="!isLoading">
-
-
-
             <CardBasic>
                 <Accordion>
                     <CardBasic>
