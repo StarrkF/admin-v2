@@ -3,6 +3,8 @@
 namespace App\Traits;
 
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use stdClass;
 
 trait ResponseTrait
 {
@@ -15,6 +17,20 @@ trait ResponseTrait
 
         return new JsonResponse($response, $statusCode);
     }
+
+    protected function successResponseCollection(ResourceCollection $resource, $message = 'Success', $statusCode = 200)
+    {
+
+        $resource = $this->apiResponse($resource);
+        $resource->message = $message;
+        return new JsonResponse($resource, $statusCode);
+    }
+
+    public function apiResponse(ResourceCollection $resource, $message = null)
+    {
+        return $resource->response()->getData();
+    }
+
 
     public function errorResponse($errors = 'error', $message = 'Server Error', $statusCode = 500): JsonResponse
     {
@@ -73,4 +89,5 @@ trait ResponseTrait
 
         return new JsonResponse($data, 404);
     }
+
 }
