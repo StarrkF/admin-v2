@@ -1,19 +1,20 @@
 export default function useApi() {
 
     const getData = async (endpoint, page = 1, type = null, search = null) => {
-        try {
-            const response = await axios.get(endpoint, { params: { type: type, search: search, page: page } });
-            return response.data.data;
-        } catch (error) {
-            return error.message;
-        }
-
+        return await axios.get(endpoint, { params: { type: type, search: search, page: page } })
+        .then(function (response) {
+            console.log(response.data)
+            return response.data
+        })
+        .catch(function (error) {
+          error.message
+        });
     }
 
     const showData = async (endpoint,parameter) => {
         try {
             const response = await axios.get(endpoint + '/' + parameter)
-            return response.data.data
+            return response.data
         } catch (error) {
             return error.message;
         }
@@ -22,7 +23,7 @@ export default function useApi() {
     const storeData = async (endpoint,data) => {
         try {
             const response = await axios.post(endpoint, data)
-            return response.data.data
+            return response.data
         } catch (error) {
             return error.message;
         }
@@ -31,7 +32,7 @@ export default function useApi() {
     const updateData = async (endpoint, parameter, data) => {
         try {
             const response = await axios.put(endpoint + '/' + parameter, data)
-            return response.data.data
+            return response.data
         } catch (error) {
             return error.message
         }
@@ -41,7 +42,7 @@ export default function useApi() {
     const deleteData = async (endpoint,parameter) => {
         try {
             const response = await axios.delete(endpoint + '/' + parameter)
-            return response.data.data
+            return response.data
         } catch (error) {
             return error.message;
         }

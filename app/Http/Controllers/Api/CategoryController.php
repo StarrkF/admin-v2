@@ -17,8 +17,8 @@ class CategoryController extends Controller
     public function index()
     {
         try {
-            $categories = Category::filter()->with('page_type')->paginate(3);
-            return $this->successResponse(new CategoryCollection($categories));
+            $categories = Category::filter()->with('page_type')->paginate(10);
+            return $this->successResponseCollection(CategoryResource::collection($categories));
         } catch (\Throwable $th) {
             return $this->errorResponse();
         }
