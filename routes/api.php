@@ -28,4 +28,4 @@ Route::get('user/{id}',[UserController::class,'show']);
 
 Route::resource('category',CategoryController::class);
 
-Route::get('get-types',[CategoryController::class,'getTypes']);
+Route::get('types',[CategoryController::class,'getTypes']);
