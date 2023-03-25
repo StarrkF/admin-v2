@@ -22,7 +22,7 @@
 
 <body>
     <div>
-        @include('Admin.includes.sidebar')
+        <x-sidebar/>
         <div id="main">
             <header class="mb-3">
                 <a href="#" class="burger-btn d-block d-xl-none">
@@ -30,8 +30,9 @@
                 </a>
             </header>
             @yield('admin.content')
-            @include('Admin.includes.footer')
+            <x-footer/>
         </div>
+
     </div>
 
 
