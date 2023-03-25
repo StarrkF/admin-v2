@@ -5,7 +5,7 @@ import '@fortawesome/fontawesome-free/js/all.js';
 
 import { createApp } from "vue/dist/vue.esm-bundler.js"
 
-import Category from './Category.vue'
+import Category from './pages/Category.vue'
 
 const app = createApp({})
 
