@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
     Route::get('permission/delete/{id}',[RolePermissionController::class,'destroy'])->name('delete.role')->middleware('can:delete-role');
 
     Route::get('categories', [CategoryController::class,'index'])->name('get.categories');
-    Route::post('categories', [CategoryController::class,'store'])->name('store.categories');
+    Route::get('projcets', [ProjectController::class,'index'])->name('get.projects');
+
 
 });

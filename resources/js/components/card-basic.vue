@@ -5,7 +5,7 @@ const props = defineProps(['title'])
 <template>
     <div class="card">
         <div class="card-header" v-show="title">
-            <h5 class="">{{ title }}</h5>
+            <h5>{{ title }}</h5>
         </div>
         <div class="card-content">
             <div class="card-body">

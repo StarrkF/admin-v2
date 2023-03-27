@@ -33,6 +33,13 @@
                 </li>
 
                 <li class="sidebar-item">
+                    <a href="{{ route('get.projects') }}" class='sidebar-link'>
+                        <i class="fa-solid fa-layer-group"></i>
+                        <span>{{ __('menus.projects') }}</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
                     <a href="{{ route('get.categories') }}" class='sidebar-link'>
                         <i class="fa-solid fa-layer-group"></i>
                         <span>{{ __('menus.categories') }}</span>

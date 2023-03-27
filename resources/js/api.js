@@ -1,6 +1,6 @@
 export default function useApi() {
 
-    const getData = async (endpoint, page = 1, type = null, search = null, pagination = 10, orderBy = null) => {
+    const getData = async (endpoint, page = 1, type = null, search = null, pagination = 25, orderBy = null) => {
         return await axios.get(endpoint, { params: { type: type, search: search, page: page, pagination: pagination, orderBy: orderBy } })
             .then(function (response) {
                 return response.data
