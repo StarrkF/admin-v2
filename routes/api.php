@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +28,6 @@ Route::get('change_lang/{lang}',[HomeController::class,'changeLang']);
 Route::get('user/{id}',[UserController::class,'show']);
 
 Route::resource('category',CategoryController::class);
+Route::resource('project',ProjectController::class);
 
 Route::get('types',[CategoryController::class,'getTypes']);

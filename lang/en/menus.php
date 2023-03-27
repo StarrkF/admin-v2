@@ -10,4 +10,5 @@ return [
     'logout' => 'Logout',
     'categories' => 'Categories',
     'category' => 'Category',
+    'projects' => 'Project',
 ];
