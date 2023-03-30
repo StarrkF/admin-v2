@@ -17,15 +17,18 @@ class CategoryController extends Controller
     public function index()
     {
         try {
-            $categories = Category::
-            filter()->with('page_type')
-            ->orderBy(request('orderBy')['row'], request('orderBy')['type'])
-            ->paginate(request('pagination'));
+            $row = request('orderBy')['row'];
+            $type = request('orderBy')['type'];
+            $pagination = request('pagination');
+
+            $categories = Category::filter()->with('page_type')
+                ->orderBy($row, $type)
+                ->paginate($pagination);
+
             return $this->successResponseCollection(CategoryResource::collection($categories));
         } catch (\Throwable $th) {
             return $this->errorResponse();
         }
-
     }
 
     /**
@@ -97,6 +100,6 @@ class CategoryController extends Controller
 
     public function getTypes()
     {
-       return $this->successResponse(PageType::get());
+        return $this->successResponse(PageType::get());
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\UserController;
@@ -40,6 +41,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
 
     Route::get('categories', [CategoryController::class,'index'])->name('get.categories');
     Route::get('projcets', [ProjectController::class,'index'])->name('get.projects');
+    Route::get('posts', [PostController::class,'index'])->name('get.posts');
 
 
 });

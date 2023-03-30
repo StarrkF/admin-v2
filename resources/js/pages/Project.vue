@@ -17,6 +17,8 @@ const title = ref([
     'Country',
     'Company Phone',
     'Company Email',
+    'Detail',
+    'Notes',
 ])
 
 const getProject = async () => {
@@ -66,6 +68,8 @@ onMounted(() => {
                         <td>{{ project.company_country }}</td>
                         <td>{{ project.company_phone }}</td>
                         <td>{{ project.company_email }}</td>
+                        <td style="max-width: 100px;" class="text-truncate" :title="project.detail">{{ project.detail }}</td>
+                        <td style="max-width: 100px;" class="text-truncate" :title="project.notes">{{ project.notes }}</td>
                     </tr>
                 </tbody>
             </table>
