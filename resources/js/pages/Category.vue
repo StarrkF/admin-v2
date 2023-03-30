@@ -168,11 +168,10 @@ const toggleColumn = (column) => {
                                 <div class="form-group col-2">
                                     <label class="text-black font-bold">Hide/Show</label>
                                     <div class="dropdown">
-                                        <button class="btn btn-primary dropdown-toggle me-1" type="button" id="hide_show"
-                                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                                             Columns
                                         </button>
-                                        <div class="dropdown-menu" aria-labelledby="hide_show">
+                                        <div class="dropdown-menu">
                                             <a v-for="item in title" role="button" class="dropdown-item"
                                                 :class="{ 'active': !hiddenColumns.includes(item.row) }"
                                                 @click="toggleColumn(item.row)">{{ item.name }}</a>

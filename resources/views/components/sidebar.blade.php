@@ -47,7 +47,7 @@
                 </li>
 
                 <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
+                    <a href="{{ route('get.posts') }}" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
                         <span>{{ __('menus.pages') }}</span>
                     </a>
@@ -55,7 +55,7 @@
                         @foreach ($categories as $category)
                             <li class="submenu-item ">
 
-                                <a href="component-alert.html">
+                                <a href="{{ route('get.posts') }}">
                                     <i class="fa-solid fa-check"></i>
                                     {{ $category->name }}
                                 </a>
