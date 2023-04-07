@@ -2,6 +2,7 @@
 import { ref, onMounted, watchEffect, computed } from 'vue'
 import CardBasic from '../components/card-basic.vue';
 import Accordion from '../components/accordion.vue';
+import BaseInput from '../components/base-input.vue';
 import useApi from '../api';
 
 const { getData } = useApi();
@@ -37,10 +38,8 @@ onMounted(() => {
 <template>
     <CardBasic>
         <CardBasic title="Utils">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" v-model="searchText">
+                <BaseInput label="Search" v-model="searchText" ></BaseInput>
                 <button class="btn btn-primary px-5" type="button" @click="getProject()">Search</button>
-            </div>
         </CardBasic>
         <div class="table-area">
             <table class="table table-responsive">
